@@ -1,0 +1,19 @@
+{% extends "glossary/base.html" %}
+
+{% block content %}
+    <h2>Список терминов</h2>
+    <table>
+        <tr>
+            <th>Термин</th>
+            <th>Определение</th>
+            <th>Тематика</th>
+        </tr>
+        {% for term in terms %}
+        <tr>
+            <td>{{ term.term }}</td>
+            <td>{{ term.definition }}</td>
+            <td>{{ term.get_theme_display }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "glossary/base.html" %}
+
+{% block content %}
+    <h2>Настройки теста</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.num_questions.label_tag }}
+            {{ form.num_questions }}
+            {{ form.num_questions.errors }}
+        </div>
+        <button type="submit" name="start_test" class="btn-primary">
+            Начать тест
+        </button>
+    </form>
+{% endblock %}

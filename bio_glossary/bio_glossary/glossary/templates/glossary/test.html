@@ -1,0 +1,25 @@
+{% extends "glossary/base.html" %}
+
+{% block content %}
+    <h2>Тест ({{ questions|length }} вопросов)</h2>
+    <form method="post" action="{% url 'submit_test' %}">
+        {% csrf_token %}
+        {% for question in questions %}
+        <div class="question-card">
+            <h3>{{ question.term.term }}</h3>
+            <div class="choices">
+                {% for choice in question.choices %}
+                <label class="choice">
+                    <input type="radio"
+                           name="term_{{ question.term.id }}"
+                           value="{{ choice }}"
+                           required>
+                    <span>{{ choice }}</span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit">Завершить тест</button>
+    </form>
+{% endblock %}

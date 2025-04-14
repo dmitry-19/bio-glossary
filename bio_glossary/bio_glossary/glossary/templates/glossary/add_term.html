@@ -1,0 +1,24 @@
+{% extends "glossary/base.html" %}
+
+{% block content %}
+    <h2>Добавление нового термина</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.term.label_tag }}
+            {{ form.term }}
+            {{ form.term.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.definition.label_tag }}
+            {{ form.definition }}
+            {{ form.definition.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.theme.label_tag }}
+            {{ form.theme }}
+            {{ form.theme.errors }}
+        </div>
+        <button type="submit">Отправить на модерацию</button>
+    </form>
+{% endblock %}

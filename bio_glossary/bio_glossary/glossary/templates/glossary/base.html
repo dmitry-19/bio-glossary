@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Биологический глоссарий</title>
+        <link rel="stylesheet" href="{% static 'glossary/css/styles.css' %}">
+        <link rel="icon" href="{% static 'glossary/img/favicon.ico' %}" type="image/x-icon">
+        <link rel="shortcut icon" href="{% static 'glossary/img/favicon.ico' %}" type="image/x-icon">
+</head>
+<body>
+    <div class="nav">
+        <a href="{% url 'home' %}">Главная</a> |
+        <a href="{% url 'add_term' %}">Добавить термин</a> |
+        <a href="{% url 'term_list' %}">Все термины</a> |
+        <a href="{% url 'test' %}">Тест</a> |
+        <a href="{% url 'statistics' %}">Статистика</a>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>

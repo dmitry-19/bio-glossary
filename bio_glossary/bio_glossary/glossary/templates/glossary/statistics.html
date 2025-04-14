@@ -1,0 +1,32 @@
+{% extends "glossary/base.html" %}
+
+{% block content %}
+<h2>Статистика</h2>
+
+<div class="stats-section">
+    <h3>Общая информация</h3>
+    <p>Всего пройдено тестов: {{ total_tests }}</p>
+</div>
+
+<div class="stats-section">
+    <h3>Проблемные тематики</h3>
+    {% if error_stats %}
+    <table>
+        <tr>
+            <th>Тематика</th>
+            <th>Количество ошибок</th>
+            <th>Процент ошибок</th>
+        </tr>
+        {% for stat in error_stats %}
+        <tr>
+            <td>{{ stat.theme_display }}</td>
+            <td>{{ stat.total_errors }}</td>
+            <td>{{ stat.error_percent|default:"-" }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>Нет данных об ошибках</p>
+    {% endif %}
+</div>
+{% endblock %}
